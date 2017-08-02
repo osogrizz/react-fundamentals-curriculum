@@ -10,13 +10,9 @@ class App extends React.Component {
       <div>
         <Nav />
         <div className='home-container'>
-
-
           <Home />
-
         </div>
       </div>
-
     )
   }
 }
