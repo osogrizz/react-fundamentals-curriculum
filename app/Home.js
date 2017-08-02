@@ -7,8 +7,13 @@ export class Home extends React.Component {
     return (
       <div className='search-container'>
           <h1 className='header'>Enter a City and State</h1>
-          <input type='text' className='' placeholder='Berlin,DE'/>
-          <button type='submit' value='Submit'>Get Weather</button>
+          <input type='text' placeholder='Berlin,DE'/>
+          <button
+                  className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'
+                  type='submit'
+                  value='Submit'>
+            Get Weather
+          </button>
       </div>
     )
   }

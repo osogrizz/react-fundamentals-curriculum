@@ -1,16 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Home} from './Home'
+import { Home } from './Home'
+import { Nav } from './Nav'
 require('./index.css')
 
 class App extends React.Component {
   render() {
     return (
-      <div className='home-container'>
+      <div>
+        <Nav />
+        <div className='home-container'>
 
-        <Home />
 
+          <Home />
+
+        </div>
       </div>
+
     )
   }
 }
