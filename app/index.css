@@ -31,6 +31,9 @@ body {
 .mdl-layout__container {
   position: relative !important;
 }
+.mdl-layout__header {
+  background-color: rgba(252, 90, 44, .89) !important;
+}
 .mdl-layout-title {
   color: white;
 }
@@ -38,9 +41,13 @@ input {
   height: 30px;
   font-size: 18px;
   border-radius: 4px;
-
 }
 button {
   margin: 20px !important;
-
+}
+.material-icons {
+  color: white;
+}
+.mdl-textfield__input {
+  color: white !important;
 }
