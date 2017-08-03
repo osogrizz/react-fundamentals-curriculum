@@ -1,20 +1,37 @@
 import React from 'react'
+let api = '../utils/api'
+
 
 export class Nav extends React.Component {
-constructor(props) {
-  super(props)
+  constructor(props) {
+    super(props)
 
-  this.state = {
-    navLocation: ''
+    this.state = {
+      navLocation: ''
+    }
+    this.handleNavLocation = this.handleNavLocation.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
-  this.handleNavLocation = this.handleNavLocation.bind(this)
-}
 
-handleNavLocation(event) {
-  this.setState({
-    navLocation: event.target.value
-  })
-}
+  handleNavLocation(e) {
+    this.setState({
+      navLocation: e.target.value
+    })
+  }
+
+  handleSubmit(e) {
+    api.getCurrentWeather(this.state.location)
+      .then(function(res) {
+        console.log(res)
+      })
+      this.props.onSubmit(this.state.location)
+
+      this.setState({
+        location: ''
+      })
+      e.preventDefault()
+  }
+
 
   render() {
     return (
@@ -40,6 +57,7 @@ handleNavLocation(event) {
                          placeholder='Get Weather'
                          value={this.state.value}
                          onChange={this.handleNavLocation}
+                         onSubmit={this.handleSubmit}
                        />
                </div>
 

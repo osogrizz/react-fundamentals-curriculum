@@ -1,5 +1,5 @@
 body {
-  background-image: url('/app/images/pattern.svg');
+  background-image: url(/app/images/pattern.svg);
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
 }
 .navcontainer {
@@ -49,5 +49,5 @@ button {
   color: white;
 }
 .mdl-textfield__input {
-  color: white !important;
+  color: white !impor;
 }

@@ -1,21 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Home } from './Home'
-import { Nav } from './Nav'
+import {App} from './components/App.js'
+
 require('./index.css')
 
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <Nav />
-        <div className='home-container'>
-          <Home />
-        </div>
-      </div>
-    )
-  }
-}
+
 
 ReactDOM.render(
   <App />,

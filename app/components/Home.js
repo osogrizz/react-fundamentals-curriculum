@@ -1,4 +1,5 @@
 import React from 'react'
+let api = '../utils/api'
 
 export class Home extends React.Component {
   constructor(props) {
@@ -8,12 +9,26 @@ export class Home extends React.Component {
       location: ''
     }
     this.handleLocation = this.handleLocation.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleLocation(event) {
+  handleLocation(e) {
     this.setState({
-      location: event.target.value
+      location: e.target.value
     })
+  }
+
+  handleSubmit(e) {
+    api.getCurrentWeather(this.state.location)
+      .then(function(res) {
+        console.log(res)
+      })
+      this.props.onSubmit(this.state.location)
+
+      this.setState({
+        location: ''
+      })
+      e.preventDefault()
   }
 
   render() {
@@ -27,7 +42,8 @@ export class Home extends React.Component {
           <button
                   className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'
                   type='submit'
-                  value='Submit'>
+                  value='Submit'
+                  onClick={this.handleSubmit}>
             Get Weather
           </button>
       </div>
