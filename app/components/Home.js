@@ -1,6 +1,6 @@
 import React from 'react'
 let api = '../utils/api'
-let ReactRouter = require('react-router-dom')
+
 
 export class Home extends React.Component {
   constructor(props) {

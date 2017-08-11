@@ -24,6 +24,7 @@
   "homepage": "https://github.com/osogrizz/react-fundamentals-curriculum",
   "dependencies": {
     "axios": "^0.16.2",
+    "query-string": "^5.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.2"
