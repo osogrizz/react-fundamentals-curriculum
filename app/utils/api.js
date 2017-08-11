@@ -1,40 +1,75 @@
 let axios = require('axios')
 
-let url = 'api.openweathermap.org/data/2.5/'
-let _APIKEY = 'e7534f6db247d8a048c103c444d05c29'
+let _APIKEY = 'ea6f972185856f6139efb699b08a38f7'
 
-prepRouteParams(queryStringData) {
-  return Object.keys(queryStringData).map(function(key) {
-    return key + '=' + encodeURIComponent(queryStringData[key])
-  }).join('&')
+getWeather (location) {
+  return axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${location}&type=accurate${_APIKEY}`)
+    .then((response) => response.data)
+    .catch(handleError)
 }
 
-prepUrl(type, queryStringData) {
-  return url + type + '?' + prepRouteParams(queryStringData)
+getForecast (location) {
+  return axios.get(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${location}&type=accurate${_APIKEY}&cnt=5`)
+    .then((response) => response.data)
+    .catch(handleError)
 }
 
-getQueryStringData(location) {
-  return {
-    q: location,
-    type: 'accurate',
-    APPID: _APIKEY,
-    cnt: 5
-  }
-}
-
-getCurrentWeather(location) {
-  let queryStringData = getQueryStringData(location)
-  let url = prepUrl('weather', queryStringData)
-
-  return axios.get(url)
-    .then(function (currentWeatherData) {
-      return forecastData.data
-    })
+handleError (error) {
+  console.warn(error)
+  return null
 }
 
 module.exports = {
-  getCurrentWeather: getCurrentWeather,
-  getForecast: getForecast
+  getWeather: getWeather,
+  getForecast: getForecast,
 }
 
-}
+//
+// var _baseURL = 'http://api.openweathermap.org/data/2.5/';
+// var _APIKEY = 'e7534f6db247d8a048c103c444d05c29';
+//
+// prepRouteParams (queryStringData) {
+//   return Object.keys(queryStringData)
+//     .map(function (key) {
+//       return key + '=' + encodeURIComponent(queryStringData[key]);
+//     }).join('&')
+// }
+//
+// prepUrl (type, queryStringData) {
+//   return _baseURL + type + '?' + prepRouteParams(queryStringData);
+// }
+//
+// getQueryStringData (location) {
+//   return {
+//     q: location,
+//     type: 'accurate',
+//     APPID: _APIKEY,
+//     cnt: 5
+//   }
+// }
+//
+// getCurrentWeather (location) {
+//   var queryStringData = getQueryStringData(location);
+//   var url = prepUrl('weather', queryStringData)
+//
+//   return axios.get(url)
+//     .then(function (currentWeatherData) {
+//       return currentWeatherData.data
+//     })
+// }
+//
+// getForcast (location) {
+//   var queryStringData = getQueryStringData(location);
+//   var url = prepUrl('forecast/daily', queryStringData)
+//
+//   return axios.get(url)
+//     .then(function (forecastData) {
+//       return forecastData.data
+//     })
+// }
+// module.exports = {
+//   getCurrentWeather: getCurrentWeather,
+//   getForecast: getForcast
+// }
+//
+// }

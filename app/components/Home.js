@@ -1,34 +1,37 @@
 import React from 'react'
 let api = '../utils/api'
+let ReactRouter = require('react-router-dom')
 
 export class Home extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      location: ''
+      loc: ''
     }
     this.handleLocation = this.handleLocation.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+  // componentDidMount() {
+  //   let self = this
+  //   fetch('http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=ea6f972185856f6139efb699b08a38f7 ')
+  //     .then(function(response) {
+  //       return response.json()
+  //     }).then(function(city) {
+  //       self.setState({city}, () => console.log(self.state))
+  //     })
+  // }
 
   handleLocation(e) {
     this.setState({
-      location: e.target.value
+      loc: e.target.value
     })
   }
 
   handleSubmit(e) {
-    api.getCurrentWeather(this.state.location)
-      .then(function(res) {
-        console.log(res)
-      })
-      this.props.onSubmit(this.state.location)
-
-      this.setState({
-        location: ''
-      })
-      e.preventDefault()
+    fetch(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${this.state.loc}&type=accurate&APPID=ea6f972185856f6139efb699b08a38f7`)
+      .then((res) => res.json())
+        .then((loc) =>  this.setState({loc}, () => console.log(this.state)) )
   }
 
   render() {

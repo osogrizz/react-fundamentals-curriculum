@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 let api = '../utils/api'
 
 
@@ -7,7 +8,7 @@ export class Nav extends React.Component {
     super(props)
 
     this.state = {
-      navLocation: ''
+      navLocation: '',
     }
     this.handleNavLocation = this.handleNavLocation.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -39,8 +40,7 @@ export class Nav extends React.Component {
 
         <header className='mdl-layout__header mdl-layout__header--scroll'>
           <div className='mdl-layout__header-row'>
-
-            <span className='mdl-layout-title'>BY JUPITER!</span>
+              <span className='mdl-layout-title'>BY JUPITER!</span>
             <div className='mdl-layout-spacer'></div>
 
               <div className='mdl-textfield mdl-js-textfield mdl-textfield--expandable
